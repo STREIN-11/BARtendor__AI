@@ -37,7 +37,7 @@ def get_greeting():
     if 5 <= hour < 12:
         return "Good morning"
     elif 12 <= hour < 17:
-        return "Good afternoon"
+        return "Good afternoonn"
     else:
         return "Good evening"
 
