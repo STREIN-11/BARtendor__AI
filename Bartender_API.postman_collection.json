@@ -1,0 +1,82 @@
+{
+	"info": {
+		"name": "AI Bartender API",
+		"description": "API endpoints for AI Bartender with camera detection and voice responses",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Start Camera Detection",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/start",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "5000",
+					"path": ["start"]
+				},
+				"description": "Starts the camera to detect people approaching the bar"
+			},
+			"response": []
+		},
+		{
+			"name": "Stop Camera Detection",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/stop",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "5000",
+					"path": ["stop"]
+				},
+				"description": "Stops the camera detection"
+			},
+			"response": []
+		},
+		{
+			"name": "Chat with Bartender",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"message\": \"Can I get a whiskey?\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/chat",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "5000",
+					"path": ["chat"]
+				},
+				"description": "Send a message to the bartender and get a voice response"
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Conversation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/reset",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "5000",
+					"path": ["reset"]
+				},
+				"description": "Clears conversation history and resets the bartender"
+			},
+			"response": []
+		}
+	]
+}

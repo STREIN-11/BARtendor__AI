@@ -1,0 +1,12 @@
+@"
+.env
+*.env
+build/
+dist/
+BartenderAI_Portable/
+*.exe
+*.pkg
+*.pyz
+__pycache__/
+*.pyc
+"@ | Set-Content .gitignore
