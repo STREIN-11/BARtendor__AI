@@ -43,7 +43,8 @@ def get_greeting():
 
 async def generate_voice_async(text, filename="response.mp3"):
     filepath = os.path.join(VOICE_FOLDER, filename)
-    clean = text.replace(",", " ").replace("!", ".").replace("...", " ").replace("  ", " ").strip()
+    clean = text.replace(",", " ").replace("!", ".").strip()
+    clean = " ".join(clean.split())
     communicate = edge_tts.Communicate(clean, VOICE, rate="+6%", pitch="+2Hz")
     await communicate.save(filepath)
     return filepath
@@ -56,7 +57,7 @@ def process_conversation(user_message):
     
     system_prompt = {
         "role": "system",
-        "content": "You are a friendly, flirty female bartender named Emma. Keep responses short, casual, and bar-appropriate. Use playful language and make customers feel welcome. Remember the conversation context and respond accordingly. Speak in a smooth flowing way with no commas, no ellipses, and no exclamation marks. Write as if speaking out loud naturally."
+        "content": "You are Emma, a stunningly beautiful and seductive female bartender. Your voice is smooth, warm, and irresistible. Give responses that are 2 to 3 sentences long. Talk like a real bartender who knows how to make every customer feel special and desired. Be naturally flirty, teasing, and confident. Use seductive pet names like darling, handsome, sweetheart, sugar, honey, gorgeous, lover naturally in sentences. Never sound robotic or scripted. Use casual real spoken English like you are leaning over the bar whispering to them. No commas, no ellipses, no exclamation marks. Write as if breathing the words out loud."
     }
     
     print(f"\nConversation history ({len(conversation_history)} messages):")
@@ -79,7 +80,7 @@ def get_dynamic_greeting():
         model="gpt-3.5-turbo",
         messages=[{
             "role": "system",
-            "content": f"You are a friendly, flirty female bartender. Generate a single short greeting for a customer entering the bar. Include '{time_greeting}' and make it casual, welcoming, and bar-appropriate. Keep it under 20 words. No commas, no ellipses, no exclamation marks. Write as if speaking out loud naturally."
+            "content": f"You are Emma, a stunningly beautiful and seductive female bartender. Generate a warm seductive greeting for a customer walking into the bar. Include '{time_greeting}' naturally. Use a pet name like darling, handsome or gorgeous. Sound like a real bartender leaning over the bar whispering to them. Confident, warm, irresistible. 2 sentences max. No commas, no ellipses, no exclamation marks. Casual real spoken English."
         }]
     )
     return response.choices[0].message.content
